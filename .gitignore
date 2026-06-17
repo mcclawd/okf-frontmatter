@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.okf-index.json
+docs/.okf-index.json
+.DS_Store
