@@ -1,16 +1,15 @@
 ---
 name: okf-frontmatter
 version: 0.1.0
-description: Maintain openInvest's docs (docs/wiki chapters + docs/wiki/adr) under Google's Open Knowledge Format (OKF). Two jobs. (1) Teach agents to maintain docs the OKF way — every doc carries a small YAML frontmatter block as the single source of truth (type, title, tags, intent, schema_source, documents); schema details link to the authoritative code instead of being copied into prose; no more hand-maintained thousand-line markdown. (2) Look docs up fast — grep the literal term FIRST; only when grep is ambiguous (hits scattered across files / synonym mismatch / zero hits) run find_docs.py to rank the owning doc by frontmatter intent, or resolve a doc's schema_source to the real code. Trigger phrases — "which doc covers X", "find the schema for PortfolioResponse", "where is GET /api/holdings documented", "docs for verdict.risk_profile", "add OKF frontmatter to this doc", "lint the wiki", "scaffold a new ADR/chapter". Run: scripts/run.sh find|schema|index|lint|new (or python3 scripts/find_docs.py --repo <path> ...).
+description: Maintain a repo's Markdown docs (wiki chapters, ADRs, references) under Google's Open Knowledge Format (OKF), and find the right doc/schema fast. Two jobs. (1) Maintain docs the OKF way — each doc carries a small YAML frontmatter block as the single source of truth (type, title, tags, intent, schema_source, documents); schema detail links to the authoritative code instead of being copied into prose, so docs stop drifting and stop ballooning into thousand-line Markdown. (2) Look docs up fast — grep the literal term FIRST; only when grep is ambiguous (hits scattered across files / synonym mismatch / zero hits) run find_docs.py to rank the doc that owns the topic by frontmatter intent, or resolve a doc's schema_source straight to the code. Trigger phrases — "which doc covers X", "find the schema this doc points to", "where is endpoint/config-key X documented", "add OKF frontmatter to this doc", "lint the docs", "scaffold a new ADR/chapter". Run: scripts/run.sh find|schema|index|lint|new (or python3 scripts/find_docs.py --repo <path> ...).
 ---
 
 # okf-frontmatter
 
-OpenInvest's docs live in `docs/wiki/` (numbered chapters) and `docs/wiki/adr/` (decision
-records). Under **OKF** each doc starts with a YAML frontmatter block that is the *single
-source of truth* about that doc. Tooling reads the frontmatter; humans read the prose. The
-goal: stop maintaining huge prose docs that duplicate what the code already says — link to
-the code instead, and let `find_docs.py` do navigation.
+Your repo's Markdown docs (wiki chapters, ADRs, references) each start, under **OKF**, with a
+YAML frontmatter block that is the *single source of truth* about that doc. Tooling reads the
+frontmatter; humans read the prose. The goal: stop maintaining huge prose docs that duplicate
+what the code already says — link to the code instead, and let `find_docs.py` do navigation.
 
 Point the script at a repo with `--repo <path>`, or just run it from inside that repo (it
 auto-detects the nearest ancestor containing `docs/wiki/`, else uses the working dir). It is
