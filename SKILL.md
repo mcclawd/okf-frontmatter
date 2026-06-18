@@ -1,7 +1,21 @@
 ---
 name: okf-frontmatter
 version: 0.1.0
-description: Maintain a repo's Markdown docs (wiki chapters, ADRs, references) under Google's Open Knowledge Format (OKF), and find the right doc/schema fast. Two jobs. (1) Maintain docs the OKF way — each doc carries a small YAML frontmatter block as the single source of truth (type, title, tags, intent, schema_source, documents); schema detail links to the authoritative code instead of being copied into prose, so docs stop drifting and stop ballooning into thousand-line Markdown. (2) Look docs up fast — grep the literal term FIRST; only when grep is ambiguous (hits scattered across files / synonym mismatch / zero hits) run find_docs.py to rank the doc that owns the topic by frontmatter intent, or resolve a doc's schema_source straight to the code. Trigger phrases — "which doc covers X", "find the schema this doc points to", "where is endpoint/config-key X documented", "add OKF frontmatter to this doc", "lint the docs", "scaffold a new ADR/chapter". Run: scripts/run.sh find|schema|index|lint|new (or python3 scripts/find_docs.py --repo <path> ...).
+description: >-
+  Maintain a repo's Markdown docs (wiki chapters, ADRs, references) under Google's
+  Open Knowledge Format (OKF), and find the right doc/schema fast. Two jobs.
+  (1) Maintain docs the OKF way — each doc carries a small YAML frontmatter block as
+  the single source of truth (type, title, tags, intent, schema_source, documents);
+  schema detail links to the authoritative code instead of being copied into prose,
+  so docs stop drifting and stop ballooning into thousand-line Markdown.
+  (2) Look docs up fast — grep the literal term FIRST; only when grep is ambiguous
+  (hits scattered across files / synonym mismatch / zero hits) run find_docs.py to
+  rank the doc that owns the topic by frontmatter intent, or resolve a doc's
+  schema_source straight to the code. Trigger phrases — "which doc covers X",
+  "find the schema this doc points to", "where is endpoint/config-key X documented",
+  "add OKF frontmatter to this doc", "lint the docs", "scaffold a new ADR/chapter".
+  Run: scripts/run.sh find|schema|index|lint|new (or python3 scripts/find_docs.py
+  --repo <path> ...).
 ---
 
 # okf-frontmatter
