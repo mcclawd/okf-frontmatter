@@ -1,0 +1,11 @@
+{
+  "name": "okf-frontmatter",
+  "description": "Maintain repo docs under the Open Knowledge Format (OKF) + fast doc/schema lookup (find_docs.py). Grep-first, script-fallback.",
+  "version": "0.1.0",
+  "author": {
+    "name": "longsizhuo"
+  },
+  "homepage": "https://github.com/longsizhuo/okf-frontmatter",
+  "repository": "https://github.com/longsizhuo/okf-frontmatter",
+  "license": "MIT"
+}

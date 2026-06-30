@@ -3,3 +3,4 @@ __pycache__/
 .okf-index.json
 docs/.okf-index.json
 .DS_Store
+.idea/

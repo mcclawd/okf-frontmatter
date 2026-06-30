@@ -97,7 +97,27 @@ python3 okf-frontmatter/scripts/find_docs.py --repo /path/to/your/repo lint
 ### Use it as an agent skill
 
 It's a standard `SKILL.md`, so any agent that loads skills can use it — Claude Code, Cursor,
-Cline, Codex, Gemini CLI, OpenClaw, and the rest. Drop it into your agent's skills directory:
+Cline, Codex, Gemini CLI, OpenClaw, and the rest. The repo also ships a
+`.claude-plugin/plugin.json` manifest, so on Claude Code it loads as a first-class plugin (not
+just a loose skill). Pick the install that matches your agent:
+
+**Claude Code (as a skills-directory plugin)** — clone into the skills dir; the bundled manifest
+makes it a plugin that auto-loads next session as `okf-frontmatter@skills-dir`:
+
+```bash
+git clone https://github.com/longsizhuo/okf-frontmatter.git ~/.claude/skills/okf-frontmatter
+# then in a session: /reload-plugins   (or restart Claude Code)
+```
+
+**Codex (as a local skill)** — Codex skills are plain folders under `$CODEX_HOME/skills/`; the
+same `SKILL.md` works as-is (no manifest needed, Codex ignores `.claude-plugin/`):
+
+```bash
+git clone https://github.com/longsizhuo/okf-frontmatter.git ~/.codex/skills/okf-frontmatter
+# picked up on the next Codex session
+```
+
+**Any other agent** — drop it wherever that agent looks for skills:
 
 ```bash
 ln -s "$(pwd)/okf-frontmatter" ~/.claude/skills/okf-frontmatter   # or wherever your agent looks
@@ -140,6 +160,7 @@ OKF is in [`references/okf-spec.md`](references/okf-spec.md).
 
 ## Layout
 ```
+.claude-plugin/plugin.json     Claude Code plugin manifest (lets it load as a plugin, not just a skill)
 SKILL.md                       the skill itself (the two jobs + the lookup decision tree)
 scripts/find_docs.py           stdlib engine: index | find | schema | lint | new
 scripts/run.sh                 thin wrapper
