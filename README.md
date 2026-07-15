@@ -5,6 +5,7 @@
 **Keep a repo's Markdown docs under the Open Knowledge Format — and find the right doc/schema fast.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![OKF BundleDex](https://bundledex.net/static-badge.svg)](https://bundledex.net)
 &nbsp;·&nbsp; pure-Python stdlib &nbsp;·&nbsp; portable agent skill — Claude Code / Codex / any
 
 </div>
